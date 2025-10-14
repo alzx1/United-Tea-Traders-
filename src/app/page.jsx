@@ -3,12 +3,16 @@ import Link from 'next/link'
 
 export default function Home() {
   const products = [
-    { name: 'Suhani Family Mix & Dust', desc: 'A family favorite — balanced, rich and fragrant.', price: '₹180 / 250g' },
-    { name: 'Raj Kirana Mix & Dust', desc: 'Strong body, perfect for everyday chai.', price: '₹160 / 250g' },
+    { name: 'Suhani Family Mix Blend', desc: 'A family favorite — balanced, rich and fragrant.', price: '₹100 / 250g' },
+    { name: 'Suhani Family Plain Dust', desc: 'A family favorite — balanced, rich and fragrant.', price: '₹100 / 250g' },
+    { name: 'Raj Kirana Mix Blend', desc: 'Strong body, perfect for everyday chai.', price: '₹80 / 250g' },
+    { name: 'Raj Kirana Plain Dust', desc: 'Strong body, perfect for everyday chai.', price: '₹80 / 250g' },
     { name: 'Masala Tea', desc: 'Hand-blended masala for that perfect spice kick.', price: '₹120 / 200g' },
-    { name: 'Hotel Blend', desc: 'Robust, bold and made for milk-heavy chai.', price: '₹200 / 250g' },
-    { name: 'OP Tea Leaves', desc: 'Whole leaf option — cleaner, lighter cup.', price: '₹220 / 250g' },
+    { name: 'Hotel Blend', desc: 'Robust, bold and made for milk-heavy chai.', price: '₹120 / 250g' },
+    { name: 'OP Tea Leaves', desc: 'Whole leaf option — cleaner, lighter cup.', price: '₹150 / 250g' },
     { name: 'Kashmiri Tea', desc: 'Aromatic and floral — a special indulgence.', price: '₹250 / 200g' },
+    { name: 'Green Tea', desc: 'Healthy choice — a special indulgence.', price: '₹200 / 200g' },
+    
   ]
 
   const address = 'Old Eidgah Road, Madannapet, Hyderabad'
@@ -125,4 +129,5 @@ export default function Home() {
     </div>
   )
 }
+
 
