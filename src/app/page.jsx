@@ -113,8 +113,14 @@ export default function Home() {
           <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {products.map((p, idx) => (
               <div key={p.name + idx} className="border rounded-lg p-4 shadow-sm hover:shadow-md transition">
-                <div className="h-36 bg-gray-50 rounded-md flex items-center justify-center mb-3">
-                  <Image src="/product-placeholder.jpg" alt={p.name} width={120} height={120} className="object-contain" />
+                <div className="h-36 bg-gray-50 rounded-md flex items-center justify-center mb-3 overflow-hidden">
+                  <Image
+                    src={p.image}
+                    alt={p.name}
+                    width={200}
+                    height={150}
+                    className="object-cover w-full h-full transition-transform duration-300 hover:scale-105"
+                  />
                 </div>
                 <h4 className="font-semibold text-lg">{p.name}</h4>
                 <p className="text-sm text-gray-600 mt-1">{p.desc}</p>
@@ -173,6 +179,7 @@ export default function Home() {
     </div>
   )
 }
+
 
 
 
