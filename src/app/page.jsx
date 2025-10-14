@@ -173,7 +173,7 @@ export default function Home() {
               </a>
             </li>
             <li><strong>WhatsApp:</strong> <a href={`https://wa.me/${whatsappNumber.replace(/[+\s]/g, '')}`} target="_blank" rel="noreferrer" className="text-green-700">Message us</a></li>
-            <li><strong>Timings:</strong> Mon–Sat, 9 AM – 8 PM</li>
+            <li><strong>Timings:</strong> Mon–Sun, 9 AM – 10 PM</li>
           </ul>
 
           <div className="mt-4">
@@ -208,6 +208,7 @@ export default function Home() {
     </div>
   )
 }
+
 
 
 
