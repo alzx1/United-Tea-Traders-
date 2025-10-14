@@ -12,7 +12,7 @@ export default function Home() {
   ]
 
   const address = 'Old Eidgah Road, Madannapet, Hyderabad'
-  const whatsappNumber = '+919876543210'
+  const whatsappNumber = '+919640002059'
 
   return (
     <div className="min-h-screen bg-cream-50 text-gray-900">
@@ -125,3 +125,4 @@ export default function Home() {
     </div>
   )
 }
+
