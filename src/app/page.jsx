@@ -118,7 +118,7 @@ export default function Home() {
                     src={p.image}
                     alt={p.name}
                     width={200}
-                    height={150}
+                    height={200}
                     className="object-cover w-full h-full transition-transform duration-300 hover:scale-105"
                   />
                 </div>
@@ -179,6 +179,7 @@ export default function Home() {
     </div>
   )
 }
+
 
 
 
