@@ -58,8 +58,9 @@ export default function Home() {
     image: "/green-tea.jpg",
   },
 ];
-
-  const address = 'Old Eidgah Road, Madannapet, Hyderabad'
+  
+  const address = 'United Tea Traders, Old Eidgah Road, Madannapet, Hyderabad';
+  const mapLink = 'https://maps.app.goo.gl/TQBiaffBwnJWSvs76';
   const whatsappNumber = '+919640002059'
 
   return (
@@ -97,7 +98,15 @@ export default function Home() {
             </div>
 
             <div className="mt-6 text-sm text-gray-600">
-              <strong>Visit Us:</strong> {address}
+              <strong>Visit Us:</strong>{' '}
+              <a
+                href={mapLink}
+                target="_blank"
+                rel="noreferrer"
+                className="text-green-700 hover:underline"
+              >
+                {address}
+              </a>
             </div>
           </div>
 
@@ -152,7 +161,17 @@ export default function Home() {
           <p className="text-sm text-gray-600 mt-2">Questions, orders, or wholesale inquiries — we’re here to help.</p>
 
           <ul className="mt-4 text-sm text-gray-700 space-y-2">
-            <li><strong>Address:</strong> {address}</li>
+            <li>
+              <strong>Address:</strong>{' '}
+              <a
+                href={mapLink}
+                target="_blank"
+                rel="noreferrer"
+                className="text-green-700 hover:underline"
+              >
+                {address}
+              </a>
+            </li>
             <li><strong>WhatsApp:</strong> <a href={`https://wa.me/${whatsappNumber.replace(/[+\s]/g, '')}`} target="_blank" rel="noreferrer" className="text-green-700">Message us</a></li>
             <li><strong>Timings:</strong> Mon–Sat, 9 AM – 8 PM</li>
           </ul>
@@ -171,7 +190,17 @@ export default function Home() {
         <div className="max-w-6xl mx-auto px-6 py-6 flex flex-col md:flex-row items-center justify-between gap-4">
           <div>
             <div className="font-semibold">United Tea Traders</div>
-            <div className="text-sm opacity-90">Old Eidgah Road, Madannapet, Hyderabad</div>
+            <div className="text-sm opacity-90">
+              <a
+                href={mapLink}
+                target="_blank"
+                rel="noreferrer"
+                className="hover:underline text-white"
+              >
+                United Tea Traders
+              </a>
+            </div>
+
           </div>
           <div className="text-sm opacity-90">© {new Date().getFullYear()} United Tea Traders — 25 years of brewing trust</div>
         </div>
@@ -179,6 +208,7 @@ export default function Home() {
     </div>
   )
 }
+
 
 
 
