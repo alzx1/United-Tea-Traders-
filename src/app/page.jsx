@@ -133,10 +133,32 @@ export default function Home() {
                 </div>
                 <h4 className="font-semibold text-lg">{p.name}</h4>
                 <p className="text-sm text-gray-600 mt-1">{p.desc}</p>
-                <div className="mt-3 flex items-center justify-between">
+                                <div className="mt-3 flex items-center justify-between gap-2">
                   <span className="text-sm font-medium">{p.price}</span>
-                  <a href={`https://wa.me/${whatsappNumber.replace(/[+\s]/g, '')}`} target="_blank" rel="noreferrer" className="text-sm bg-green-700 text-white px-3 py-1 rounded">Order</a>
+                  
+                  {/* Quantity Input */}
+                  <input
+                    type="number"
+                    min="1"
+                    defaultValue="1"
+                    id={`qty-${idx}`}
+                    className="w-14 border border-gray-300 rounded px-2 py-1 text-sm focus:outline-none focus:border-green-600"
+                  />
+                
+                  {/* Order Button */}
+                  <button
+                    onClick={() => {
+                      const qty = document.getElementById(`qty-${idx}`).value || 1;
+                      const message = `Hello, I’d like to order ${qty} pack(s) of ${p.name} (${p.price})`;
+                      const link = `https://wa.me/${whatsappNumber.replace(/[+\s]/g, '')}?text=${encodeURIComponent(message)}`;
+                      window.open(link, '_blank');
+                    }}
+                    className="text-sm bg-green-700 text-white px-3 py-1 rounded hover:bg-green-800 transition"
+                  >
+                    Order
+                  </button>
                 </div>
+
               </div>
             ))}
           </div>
@@ -208,6 +230,7 @@ export default function Home() {
     </div>
   )
 }
+
 
 
 
