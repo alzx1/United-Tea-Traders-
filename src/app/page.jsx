@@ -1,67 +1,45 @@
-import Image from 'next/image'
-import Link from 'next/link'
+"use client";
+
+import { useState } from "react";
+import Image from "next/image";
+import Link from "next/link";
 
 export default function Home() {
+  const whatsappNumber = "+919640002059";
+  const mapLink = "https://maps.app.goo.gl/TQBiaffBwnJWSvs76";
+
   const products = [
-  {
-    name: "Suhani Family Mix Blend",
-    desc: "A family favorite — balanced, rich and fragrant.",
-    price: "₹100 / 250g",
-    image: "/suhani-mix.jpg",
-  },
-  {
-    name: "Suhani Family Plain Dust",
-    desc: "A family favorite — balanced, rich and fragrant.",
-    price: "₹100 / 250g",
-    image: "/suhani-dust.jpg",
-  },
-  {
-    name: "Raj Kirana Mix Blend",
-    desc: "Strong body, perfect for everyday chai.",
-    price: "₹80 / 250g",
-    image: "/raj-mix.jpg",
-  },
-  {
-    name: "Raj Kirana Plain Dust",
-    desc: "Strong body, perfect for everyday chai.",
-    price: "₹80 / 250g",
-    image: "/raj-dust.jpg",
-  },
-  {
-    name: "Masala Tea",
-    desc: "Hand-blended masala for that perfect spice kick.",
-    price: "₹120 / 200g",
-    image: "/masala-tea.jpg",
-  },
-  {
-    name: "Hotel Blend",
-    desc: "Robust, bold and made for milk-heavy chai.",
-    price: "₹120 / 250g",
-    image: "/hotel-blend.jpg",
-  },
-  {
-    name: "OP Tea Leaves",
-    desc: "Whole leaf option — cleaner, lighter cup.",
-    price: "₹150 / 250g",
-    image: "/op-tea.jpg",
-  },
-  {
-    name: "Kashmiri Tea",
-    desc: "Aromatic and floral — a special indulgence.",
-    price: "₹250 / 200g",
-    image: "/kashmiri-tea.jpg",
-  },
-  {
-    name: "Green Tea",
-    desc: "Healthy choice — a special indulgence.",
-    price: "₹200 / 200g",
-    image: "/green-tea.jpg",
-  },
-];
-  
-  const address = 'United Tea Traders, Old Eidgah Road, Madannapet, Hyderabad';
-  const mapLink = 'https://maps.app.goo.gl/TQBiaffBwnJWSvs76';
-  const whatsappNumber = '+919640002059'
+    { id: "suhani-mix", name: "Suhani Family Mix Blend", desc: "A family favorite — balanced, rich and fragrant.", price: "₹100 / 250g", image: "/suhani-mix.jpg" },
+    { id: "suhani-dust", name: "Suhani Family Plain Dust", desc: "A family favorite — balanced, rich and fragrant.", price: "₹100 / 250g", image: "/suhani-dust.jpg" },
+    { id: "raj-mix", name: "Raj Kirana Mix Blend", desc: "Strong body, perfect for everyday chai.", price: "₹80 / 250g", image: "/raj-mix.jpg" },
+    { id: "raj-dust", name: "Raj Kirana Plain Dust", desc: "Strong body, perfect for everyday chai.", price: "₹80 / 250g", image: "/raj-dust.jpg" },
+    { id: "masala", name: "Masala Tea", desc: "Hand-blended masala for that perfect spice kick.", price: "₹120 / 200g", image: "/masala-tea.jpg" },
+    { id: "hotel", name: "Hotel Blend", desc: "Robust, bold and made for milk-heavy chai.", price: "₹120 / 250g", image: "/hotel-blend.jpg" },
+    { id: "op", name: "OP Tea Leaves", desc: "Whole leaf option — cleaner, lighter cup.", price: "₹150 / 250g", image: "/op-tea.jpg" },
+    { id: "kashmiri", name: "Kashmiri Tea", desc: "Aromatic and floral — a special indulgence.", price: "₹250 / 200g", image: "/kashmiri-tea.jpg" },
+    { id: "green", name: "Green Tea", desc: "Healthy choice — a special indulgence.", price: "₹200 / 200g", image: "/green-tea.jpg" },
+  ];
+
+  // quantities: { productId: number }
+  const [quantities, setQuantities] = useState(() => {
+    const initial = {};
+    products.forEach((p) => (initial[p.id] = 1));
+    return initial;
+  });
+
+  function handleQtyChange(id, value) {
+    const n = Math.max(1, Number(value || 1));
+    setQuantities((q) => ({ ...q, [id]: n }));
+  }
+
+  function orderOnWhatsApp(product) {
+    const qty = quantities[product.id] || 1;
+    const message = `Hello, I'd like to order ${qty} pack(s) of ${product.name} (${product.price}) from United Tea Traders.`;
+    const url = `https://wa.me/${whatsappNumber.replace(/[+\s]/g, "")}?text=${encodeURIComponent(
+      message
+    )}`;
+    window.open(url, "_blank");
+  }
 
   return (
     <div className="min-h-screen bg-cream-50 text-gray-900">
@@ -77,11 +55,11 @@ export default function Home() {
             </div>
           </div>
           <nav className="hidden md:flex gap-6 items-center">
-            <Link href="#products" className="hover:underline">Products</Link>
-            <Link href="#about" className="hover:underline">About</Link>
-            <Link href="#gallery" className="hover:underline">Gallery</Link>
-            <Link href="#contact" className="hover:underline">Contact</Link>
-            <a href={`https://wa.me/${whatsappNumber.replace(/[+\s]/g, '')}`} target="_blank" rel="noreferrer" className="bg-white text-green-700 px-4 py-2 rounded-full font-medium shadow">WhatsApp</a>
+            <a href="#products" className="hover:underline">Products</a>
+            <a href="#about" className="hover:underline">About</a>
+            <a href="#gallery" className="hover:underline">Gallery</a>
+            <a href="#contact" className="hover:underline">Contact</a>
+            <a href={`https://wa.me/${whatsappNumber.replace(/[+\s]/g, "")}`} target="_blank" rel="noreferrer" className="bg-white text-green-700 px-4 py-2 rounded-full font-medium shadow">WhatsApp</a>
           </nav>
         </div>
       </header>
@@ -93,25 +71,18 @@ export default function Home() {
             <p className="mt-4 text-gray-700">United Tea Traders brings 25 years of family passion to every blend. From heritage mixes to aromatic Kashmiri leaf — discover tea crafted with care.</p>
 
             <div className="mt-6 flex gap-4">
-              <Link href="#products" className="inline-block bg-green-700 text-white px-5 py-3 rounded-md font-semibold shadow">Explore Blends</Link>
-              <a href={`https://wa.me/${whatsappNumber.replace(/[+\s]/g, '')}`} target="_blank" rel="noreferrer" className="inline-block border border-green-700 text-green-700 px-5 py-3 rounded-md font-semibold">Order on WhatsApp</a>
+              <a href="#products" className="inline-block bg-green-700 text-white px-5 py-3 rounded-md font-semibold shadow">Explore Blends</a>
+              <a href={`https://wa.me/${whatsappNumber.replace(/[+\s]/g, "")}`} target="_blank" rel="noreferrer" className="inline-block border border-green-700 text-green-700 px-5 py-3 rounded-md font-semibold">Order on WhatsApp</a>
             </div>
 
             <div className="mt-6 text-sm text-gray-600">
-              <strong>Visit Us:</strong>{' '}
-              <a
-                href={mapLink}
-                target="_blank"
-                rel="noreferrer"
-                className="text-green-700 hover:underline"
-              >
-                {address}
-              </a>
+              <strong>Visit Us:</strong>{" "}
+              <a href={mapLink} target="_blank" rel="noreferrer" className="text-green-700 hover:underline">United Tea Traders</a>
             </div>
           </div>
 
           <div className="rounded-lg overflow-hidden shadow-lg">
-            <Image src="/hero-teashop.jpg" alt="United Tea Traders Shop" width={600} height={400} className="w-full h-80 object-cover" />
+            <Image src="/hero-teashop.jpg" alt="United Tea Traders Shop" width={1200} height={800} className="w-full h-80 object-cover" />
           </div>
         </section>
 
@@ -121,44 +92,40 @@ export default function Home() {
 
           <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {products.map((p, idx) => (
-              <div key={p.name + idx} className="border rounded-lg p-4 shadow-sm hover:shadow-md transition">
+              <div key={p.id} className="border rounded-lg p-4 shadow-sm hover:shadow-md transition">
                 <div className="h-36 bg-gray-50 rounded-md flex items-center justify-center mb-3 overflow-hidden">
                   <Image
                     src={p.image}
                     alt={p.name}
-                    width={200}
-                    height={200}
+                    width={400}
+                    height={300}
                     className="object-cover w-full h-full transition-transform duration-300 hover:scale-105"
                   />
                 </div>
+
                 <h4 className="font-semibold text-lg">{p.name}</h4>
                 <p className="text-sm text-gray-600 mt-1">{p.desc}</p>
-                                <div className="mt-3 flex items-center justify-between gap-2">
-                  <span className="text-sm font-medium">{p.price}</span>
-                  
-                  {/* Quantity Input */}
-                  <input
-                    type="number"
-                    min="1"
-                    defaultValue="1"
-                    id={`qty-${idx}`}
-                    className="w-14 border border-gray-300 rounded px-2 py-1 text-sm focus:outline-none focus:border-green-600"
-                  />
-                
-                  {/* Order Button */}
-                  <button
-                    onClick={() => {
-                      const qty = document.getElementById(`qty-${idx}`).value || 1;
-                      const message = `Hello, I’d like to order ${qty} pack(s) of ${p.name} (${p.price})`;
-                      const link = `https://wa.me/${whatsappNumber.replace(/[+\s]/g, '')}?text=${encodeURIComponent(message)}`;
-                      window.open(link, '_blank');
-                    }}
-                    className="text-sm bg-green-700 text-white px-3 py-1 rounded hover:bg-green-800 transition"
-                  >
-                    Order
-                  </button>
-                </div>
 
+                <div className="mt-3 flex items-center justify-between gap-2">
+                  <span className="text-sm font-medium">{p.price}</span>
+
+                  <div className="flex items-center gap-2">
+                    <input
+                      type="number"
+                      min="1"
+                      value={quantities[p.id]}
+                      onChange={(e) => handleQtyChange(p.id, e.target.value)}
+                      className="w-16 border border-gray-300 rounded px-2 py-1 text-sm focus:outline-none focus:border-green-600"
+                    />
+
+                    <button
+                      onClick={() => orderOnWhatsApp(p)}
+                      className="text-sm bg-green-700 text-white px-3 py-1 rounded hover:bg-green-800 transition"
+                    >
+                      Order
+                    </button>
+                  </div>
+                </div>
               </div>
             ))}
           </div>
@@ -173,7 +140,7 @@ export default function Home() {
           <h3 className="text-2xl font-bold text-green-800">Gallery</h3>
           <div className="mt-4 grid grid-cols-2 md:grid-cols-4 gap-3">
             {[1, 2, 3, 4].map((i) => (
-              <Image key={i} src={`/gallery-${i}.jpg`} alt={`Gallery ${i}`} width={200} height={120} className="w-full h-32 object-cover rounded" />
+              <Image key={i} src={`/gallery-${i}.jpg`} alt={`Gallery ${i}`} width={400} height={300} className="w-full h-32 object-cover rounded" />
             ))}
           </div>
         </section>
@@ -184,24 +151,17 @@ export default function Home() {
 
           <ul className="mt-4 text-sm text-gray-700 space-y-2">
             <li>
-              <strong>Address:</strong>{' '}
-              <a
-                href={mapLink}
-                target="_blank"
-                rel="noreferrer"
-                className="text-green-700 hover:underline"
-              >
-                {address}
-              </a>
+              <strong>Address:</strong>{" "}
+              <a href={mapLink} target="_blank" rel="noreferrer" className="text-green-700 hover:underline">United Tea Traders</a>
             </li>
-            <li><strong>WhatsApp:</strong> <a href={`https://wa.me/${whatsappNumber.replace(/[+\s]/g, '')}`} target="_blank" rel="noreferrer" className="text-green-700">Message us</a></li>
-            <li><strong>Timings:</strong> Mon–Sun, 9 AM – 10 PM</li>
+            <li><strong>WhatsApp:</strong> <a href={`https://wa.me/${whatsappNumber.replace(/[+\s]/g, "")}`} target="_blank" rel="noreferrer" className="text-green-700">Message us</a></li>
+            <li><strong>Timings:</strong> Mon–Sat, 9 AM – 8 PM</li>
           </ul>
 
           <div className="mt-4">
             <iframe
               title="map"
-              src={`https://www.google.com/maps?q=${encodeURIComponent(address)}&output=embed`}
+              src={`https://www.google.com/maps?q=${encodeURIComponent("United Tea Traders Old Eidgah Road Madannapet Hyderabad")}&output=embed`}
               className="w-full h-48 rounded"
             />
           </div>
@@ -213,28 +173,12 @@ export default function Home() {
           <div>
             <div className="font-semibold">United Tea Traders</div>
             <div className="text-sm opacity-90">
-              <a
-                href={mapLink}
-                target="_blank"
-                rel="noreferrer"
-                className="hover:underline text-white"
-              >
-                United Tea Traders
-              </a>
+              <a href={mapLink} target="_blank" rel="noreferrer" className="hover:underline text-white">United Tea Traders</a>
             </div>
-
           </div>
           <div className="text-sm opacity-90">© {new Date().getFullYear()} United Tea Traders — 25 years of brewing trust</div>
         </div>
       </footer>
     </div>
-  )
+  );
 }
-
-
-
-
-
-
-
-
