@@ -13,11 +13,11 @@ export default function Home() {
     { id: "suhani-dust", name: "Suhani Family Plain Dust", desc: "A family favorite — balanced, rich and fragrant.", price: "₹100 / 250g", image: "/suhani-dust.jpg" },
     { id: "raj-mix", name: "Raj Kirana Mix Blend", desc: "Strong body, perfect for everyday chai.", price: "₹80 / 250g", image: "/raj-mix.jpg" },
     { id: "raj-dust", name: "Raj Kirana Plain Dust", desc: "Strong body, perfect for everyday chai.", price: "₹80 / 250g", image: "/raj-dust.jpg" },
-    { id: "masala", name: "Masala Tea", desc: "Hand-blended masala for that perfect spice kick.", price: "₹120 / 200g", image: "/masala-tea.jpg" },
+    { id: "masala", name: "Masala Tea", desc: "Hand-blended masala for that perfect spice kick.", price: "₹120 / 250g", image: "/masala-tea.jpg" },
     { id: "hotel", name: "Hotel Blend", desc: "Robust, bold and made for milk-heavy chai.", price: "₹120 / 250g", image: "/hotel-blend.jpg" },
     { id: "op", name: "OP Tea Leaves", desc: "Whole leaf option — cleaner, lighter cup.", price: "₹150 / 250g", image: "/op-tea.jpg" },
-    { id: "kashmiri", name: "Kashmiri Tea", desc: "Aromatic and floral — a special indulgence.", price: "₹250 / 200g", image: "/kashmiri-tea.jpg" },
-    { id: "green", name: "Green Tea", desc: "Healthy choice — a special indulgence.", price: "₹200 / 200g", image: "/green-tea.jpg" },
+    { id: "kashmiri", name: "Kashmiri Tea", desc: "Aromatic and floral — a special indulgence.", price: "₹250 / 250g", image: "/kashmiri-tea.jpg" },
+    { id: "green", name: "Green Tea", desc: "Healthy choice — a special indulgence.", price: "₹200 / 250g", image: "/green-tea.jpg" },
   ];
 
   // quantities: { productId: number }
@@ -182,4 +182,5 @@ export default function Home() {
     </div>
   );
 }
+
 
