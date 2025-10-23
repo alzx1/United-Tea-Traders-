@@ -34,7 +34,7 @@ export default function Home() {
 
   function orderOnWhatsApp(product) {
     const qty = quantities[product.id] || 1;
-    const message = `Hello, I'd like to order ${qty} pack(s) of ${product.name} (${product.price}) from United Tea Traders.`;
+    const message = `Assalamualaikum, I'd like to order ${qty} pack(s) of ${product.name} (${product.price}) from United Tea Traders.`;
     const url = `https://wa.me/${whatsappNumber.replace(/[+\s]/g, "")}?text=${encodeURIComponent(
       message
     )}`;
@@ -182,3 +182,4 @@ export default function Home() {
     </div>
   );
 }
+
