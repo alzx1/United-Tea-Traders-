@@ -285,7 +285,7 @@ export default function Home() {
             <div className="rounded-xl overflow-hidden border-2 border-amber-600/50 h-56 bg-emerald-900/50 relative shadow-lg shadow-emerald-900/50">
                <iframe 
                  title="Google Map"
-                 src="http://googleusercontent.com/maps.google.com/9"
+                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3808.178369528119!2d78.49679137516418!3d17.355147983526518!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcb99002c6109c7%3A0x98566935d95dd211!2sUnited%20Tea%20Traders!5e0!3m2!1sen!2sin!4v1767250520149!5m2!1sen!2sin"
                  className="absolute inset-0 w-full h-full opacity-75 hover:opacity-100 transition-opacity grayscale-[50%] hover:grayscale-0" 
                  allowFullScreen="" 
                  loading="lazy"
@@ -303,3 +303,4 @@ export default function Home() {
     </div>
   );
 }
+
