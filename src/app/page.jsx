@@ -38,7 +38,7 @@ export default function Home() {
     window.open(url, "_blank");
   }
 
-  // Reusable Decorative Tea Leaf Divider (Darker color for visibility on gold)
+  // Reusable Decorative Tea Leaf Divider
   const TeaDivider = () => (
     <div className="flex items-center justify-center gap-4 py-8 opacity-60">
         <div className="h-px w-20 bg-gradient-to-r from-transparent to-emerald-900"></div>
@@ -50,17 +50,21 @@ export default function Home() {
   );
 
   return (
-    // UPDATED BACKGROUND: A rich gradient from warm beige to golden amber
     <div className="min-h-screen bg-gradient-to-br from-[#fdfbf7] via-[#fceeb5] to-[#f0c38e] text-emerald-950 font-sans selection:bg-emerald-800 selection:text-white relative">
       
       {/* Navigation - Sticky & Glassy */}
       <header className="sticky top-0 z-50 bg-[#fffdf5]/90 backdrop-blur-md border-b border-amber-500/30 shadow-sm">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <div className="relative w-12 h-12 flex-shrink-0">
-               <div className="w-full h-full bg-gradient-to-br from-emerald-900 to-emerald-950 rounded-full flex items-center justify-center text-amber-400 font-serif font-bold text-xl border-2 border-amber-500 shadow-md">
-                 UT
-               </div>
+            {/* LOGO SECTION - Updated to use Image file */}
+            <div className="relative w-14 h-14 flex-shrink-0 bg-white rounded-full border-2 border-amber-500/50 shadow-md overflow-hidden p-1">
+               <Image 
+                 src="/logo.svg" // Make sure your file is named logo.svg in the public folder
+                 alt="United Tea Traders Logo" 
+                 fill
+                 className="object-contain"
+                 priority
+               />
             </div>
             <div>
               <h1 className="font-serif text-2xl font-bold text-emerald-950 tracking-tight leading-none">United Tea Traders</h1>
@@ -200,7 +204,6 @@ export default function Home() {
         <TeaDivider />
 
         {/* Story Section */}
-        {/* Updated background to be slightly darker/warmer than the main background to create a "card" effect */}
         <section id="about" className="py-20 relative overflow-hidden">
            <div className="absolute inset-0 bg-amber-100/40 transform skew-y-3 scale-110"></div>
            
@@ -285,7 +288,7 @@ export default function Home() {
             <div className="rounded-xl overflow-hidden border-2 border-amber-600/50 h-56 bg-emerald-900/50 relative shadow-lg shadow-emerald-900/50">
                <iframe 
                  title="Google Map"
-                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3808.178369528119!2d78.49679137516418!3d17.355147983526518!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcb99002c6109c7%3A0x98566935d95dd211!2sUnited%20Tea%20Traders!5e0!3m2!1sen!2sin!4v1767250520149!5m2!1sen!2sin"
+                 src="http://googleusercontent.com/maps.google.com/9"
                  className="absolute inset-0 w-full h-full opacity-75 hover:opacity-100 transition-opacity grayscale-[50%] hover:grayscale-0" 
                  allowFullScreen="" 
                  loading="lazy"
@@ -303,4 +306,3 @@ export default function Home() {
     </div>
   );
 }
-
